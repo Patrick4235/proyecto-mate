@@ -14,7 +14,9 @@
     <string name="modo_dificil">Dificil</string>
     <string name="numero_ejercicio">Ejercicio 0</string>
     <string name="ejercicio">30-30=0</string>
-    <string name="answer_here">Aqui tu respuesta</string>
+    <string name="number">2323</string>
+    <string name="mathematical_symbol">+/-</string>
+    <string name="answer_here">Respuesta</string>
     <string name="siguiente_ejercicio">Siguiente Ejercicio</string>
     <string name="imagen_correcto">Ejercicios Correctos</string>
     <string name="imagen_incorrecto">Ejercicios Incorrectos</string>

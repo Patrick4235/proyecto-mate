@@ -1,11 +1,23 @@
 package com.paquete.proyectomatematicat
 
+import android.app.Activity
 import android.app.ActivityManager
+import android.content.Context
 import android.content.Intent
+import android.graphics.PixelFormat
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
+import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.View
+import android.view.WindowManager
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -14,6 +26,8 @@ import androidx.core.view.WindowInsetsCompat
 class MainActivity : AppCompatActivity() {
 
     private val REQUEST_CODE_ENABLE_ADMIN = 1
+
+    private lateinit var overlayPermissionLauncher: ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,14 +48,18 @@ class MainActivity : AppCompatActivity() {
             
         }
 
-
-        /*val deviceAdmin = ComponentName(this, MyDeviceAdminReceiver::class.java)
-
-        val intent = Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN)
-        intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, deviceAdmin)
-        intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION, "Necesitamos permisos para bloquear la pantalla")
-        startActivityForResult(intent, REQUEST_CODE_ENABLE_ADMIN)*/
-
+        // Registrar el lanzador del resultado de actividad
+        overlayPermissionLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (Settings.canDrawOverlays(this)) {
+                // El permiso fue otorgado
+                Toast.makeText(this, "Permiso de superposición otorgado", Toast.LENGTH_SHORT).show()
+                // Aquí puedes mostrar la ventana superpuesta
+                showOverlayWindow()
+            } else {
+                // El permiso fue denegado
+                Toast.makeText(this, "Permiso de superposición denegado", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun startLockTaskMode() {
@@ -51,6 +69,56 @@ class MainActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this, "Modo de Pantalla Fija Activado", Toast.LENGTH_LONG).show()
         }
+    }
+
+    fun checkSystemAlertWindowPermission(view: View) {
+        if (!Settings.canDrawOverlays(this)) {
+            // Si no tiene el permiso, redirigimos al usuario a la configuración
+            requestSystemAlertWindowPermission()
+        } else {
+            // Ya tiene el permiso, puedes realizar acciones con SYSTEM_ALERT_WINDOW aquí
+            Toast.makeText(this, "Permiso otorgado", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    fun requestSystemAlertWindowPermission() {
+        val intent = Intent(
+            Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+            Uri.parse("package:$packageName")
+        )
+
+        overlayPermissionLauncher.launch(intent)
+    }
+
+    fun showOverlayWindow() {
+        val windowManager = getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+
+        // Cargar el layout de la ventana superpuesta
+        val overlayView: View = inflater.inflate(R.layout.activity_overlay_layout, null)
+
+        // Configurar los parámetros de la ventana
+        val layoutParams = WindowManager.LayoutParams(
+            WindowManager.LayoutParams.WRAP_CONTENT,
+            WindowManager.LayoutParams.WRAP_CONTENT,
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
+            else
+                WindowManager.LayoutParams.TYPE_PHONE,
+            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+            PixelFormat.TRANSLUCENT
+        )
+
+        layoutParams.gravity = Gravity.TOP or Gravity.LEFT
+        layoutParams.x = 0
+        layoutParams.y = 100
+
+        // Mostrar la ventana superpuesta
+        windowManager.addView(overlayView, layoutParams)
+
+        // Ejemplo de cómo modificar elementos en la vista
+        val textView = overlayView.findViewById<TextView>(R.id.overlayTextView)
+        textView.text = "Ventana Superpuesta"
     }
 
     private fun isDeviceOwner(): Boolean {
@@ -83,8 +151,8 @@ class MainActivity : AppCompatActivity() {
     }*/
 
     fun EmpezarLeccion(view: View){
-        startLockTaskMode()
-        startActivity(Intent(this, ExercisesActivity::class.java))
+        //startLockTaskMode()
+        startActivity(Intent(this, Addition_SubtractionActivity::class.java))
         this.finish()
     }
 }

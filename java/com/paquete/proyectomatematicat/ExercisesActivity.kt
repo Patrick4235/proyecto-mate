@@ -53,6 +53,12 @@ class ExercisesActivity : AppCompatActivity() {
         createSimpleExercise()
     }
 
+    override fun onRestart() {
+        super.onRestart()
+
+        startLockTask()
+    }
+
     fun createRandomExercise(){
         var expression = "3+5*(3+4)"
         var result = ExpressionBuilder(expression).build().evaluate().toInt();
