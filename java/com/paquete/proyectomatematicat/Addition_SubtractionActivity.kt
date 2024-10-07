@@ -126,8 +126,15 @@ class Addition_SubtractionActivity : AppCompatActivity() {
         txtCorrectAnswer.setText("")
 
         numbers.clear()
-        createRandomExercise()
+
+
+        //createRandomExercise()
     }
+    // Supongamos que la actividad tiene una función llamada 'someFunction'
+    fun callActivityDirectly() {
+    }
+
+
 
     fun checkTotalAnswer(){
         if(correctAnswers >= 3){

@@ -8,6 +8,7 @@
     <string name="correct_answer">Respuesta correcta</string>
     <string name="check_answer">Verificar Respuesta</string>
     <string name="next_exercise">Siguiente Ejercicio</string>
+    <string name="exercise">2323 + 2323 = 2323</string>
     <string name="informacion">A continuacion se mostrara una serie de ejercicios matematicos a resolver</string>
     <string name="modo_facil">Facil</string>
     <string name="modo_normal">Normal</string>
@@ -27,4 +28,6 @@
     <string name="ejercicios_incorrectos">Ejercicios Incorrectos: 30</string>
     <string name="reintentar">Reintentar</string>
     <string name="menu_principal">Menu Principal</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

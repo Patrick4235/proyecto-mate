@@ -7,121 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".ExercisesActivity">
 
-    <TextView
-        android:id="@+id/idNumeroEjercicio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
-        android:text="@string/numero_ejercicio"
-        android:textColor="@color/colorBlue"
-        android:textSize="18sp"
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txtExercise"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="@string/ejercicio"
-        android:textColor="@color/colorBlack"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idNumeroEjercicio" />
-
-
-    <EditText
-        android:id="@+id/etAnswer"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:hint="@string/answer_here"
-        android:inputType="numberDecimal|numberSigned"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtExercise" />
-
-    <Button
-        android:id="@+id/btnCheckAnswer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/rounded_button_siguiente"
-        android:onClick="checkAnswer"
-        android:text="@string/check_answer"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCorrectAnswer" />
-
-    <Button
-        android:id="@+id/btnNextExercise"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/rounded_button_siguiente"
-        android:onClick="nextExercise"
-        android:text="@string/next_exercise"
-        android:textSize="14sp"
-        android:visibility="invisible"
-        tools:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCheckAnswer" />
-
-    <ImageView
-        android:id="@+id/ivImagenCorrecto"
-        android:layout_width="16dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="88dp"
-        android:layout_marginTop="50dp"
-        android:contentDescription="@string/app_name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnNextExercise"
-        app:srcCompat="@drawable/correcto" />
-
-    <TextView
-        android:id="@+id/txtCorrectAnswersCounter"
-        android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
-        android:text="@string/number_zero"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivImagenCorrecto" />
-
-    <ImageView
-        android:id="@+id/ivImagenIncorrecto"
-        android:layout_width="16dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="88dp"
-        android:contentDescription="@string/app_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnNextExercise"
-        app:srcCompat="@drawable/incorrecto" />
-
-    <TextView
-        android:id="@+id/txtIncorrectAnswersCounter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="88dp"
-        android:gravity="center"
-        android:text="@string/number_zero"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivImagenIncorrecto" />
-
-    <TextView
-        android:id="@+id/txtCorrectAnswer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        tools:text="@string/correct_answer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etAnswer" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

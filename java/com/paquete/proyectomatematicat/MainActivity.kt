@@ -152,7 +152,13 @@ class MainActivity : AppCompatActivity() {
 
     fun EmpezarLeccion(view: View){
         //startLockTaskMode()
-        startActivity(Intent(this, Addition_SubtractionActivity::class.java))
-        this.finish()
+        startActivity(Intent(this, ExercisesActivity::class.java))
+        //this.finish()
     }
+
+    fun EmpezarLeccion2(view: View){
+        val fragment = MissedNumberFragment()
+        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).commit()
+    }
+
 }

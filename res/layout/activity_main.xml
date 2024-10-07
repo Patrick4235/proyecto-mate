@@ -7,6 +7,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+
     <TextView
         android:id="@+id/txtBienvenida"
         android:layout_width="wrap_content"
@@ -47,16 +49,30 @@
         app:layout_constraintTop_toBottomOf="@+id/txtInformacion" />
 
     <Button
+        android:id="@+id/btnEmpezarEjercicios2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="196dp"
+        android:background="@drawable/rounded_button_correcta"
+        android:onClick="EmpezarLeccion2"
+        android:text="Emperzar 2"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtInformacion" />
+
+    <Button
         android:id="@+id/btnPrueba"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="136dp"
+        android:layout_marginTop="316dp"
         android:background="@drawable/rounded_button_correcta"
         android:onClick="checkSystemAlertWindowPermission"
         android:text="Prueba"
         android:textColor="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtInformacion" />
 
